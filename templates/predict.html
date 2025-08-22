@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MindPredict - Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: url("{{ url_for('static', filename='Bg.png') }}") no-repeat center center;
+            background-size: cover;
+            opacity: 0.15; 
+            z-index: -1;
+            animation: floatBackground 40s infinite ease-in-out;
+        }
+
+        @keyframes floatBackground {
+            0%   { transform: translate(0, 0) scale(1); opacity: 0.15; }
+            25%  { transform: translate(-25px, -15px) scale(1.05); opacity: 0.2; }
+            50%  { transform: translate(-50px, -25px) scale(1.1); opacity: 0.25; }
+            75%  { transform: translate(-25px, -15px) scale(1.05); opacity: 0.2; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .navbar .logo {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar li {
+            margin: 0 12px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #ffd700;
+        }
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 95%;
+            margin-top: 30px;
+            flex-wrap: wrap; /* responsive */
+        }
+        .card {
+            background: #fff;
+            color: #333;
+            max-width: 600px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            flex: 2;
+            margin: 20px;
+            z-index: 1; /* stay above background */
+        }
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .textarea, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .btn-submit {
+            background: #2575fc;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            background: #1a5edb;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f0f8ff;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .badge {
+            background: #2575fc;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+            background: rgba(0,0,0,0.4);
+            font-size: 0.9em;
+            width: 100%;
+        }
+        /* Side Images */
+        .side-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        .side-image img {
+            max-width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        /* Animations */
+        .left-img {
+            animation: slideInLeft 1.5s ease-out forwards;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-200px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .right-img {
+            animation: slideInRight 1.5s ease-out forwards;
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(200px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .error-msg {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MindPredict</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/predict">Prediction</a></li>
+        </ul>
+    </nav>
+    <div class="main-container">
+        <div class="side-image">
+            <img src="{{ url_for('static', filename='img2.jpeg') }}" alt="Left Image" class="left-img">
+        </div>
+        <div class="card">
+            <h2 style="text-align:center; color:#2575fc;">Enter Your Details</h2>
+            <form action="/predict" method="POST" class="form">
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Enter your name" required class="textarea">
+                    <input type="number" name="age" placeholder="Enter your age" min="10" max="120" required class="textarea">
+                </div>
+                <label for="text" class="label">Your Thoughts</label>
+                <textarea name="text" placeholder="Type your thoughts here..." required></textarea>
+                <button type="submit" class="btn-submit">Predict</button>
+            </form>
+
+          
+            {% if error %}
+                <p class="error-msg">{{ error }}</p>
+            {% endif %}
+
+            {% if prediction %}
+            <div class="result">
+                <h2>Prediction Result</h2>
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Age:</strong> {{ age }}</p>
+                <p><strong>Your Thoughts:</strong> {{ original }}</p>
+                <p><span class="badge">{{ prediction }}</span></p>
+
+                {% if solution %}
+                <h3>Suggested Solution</h3>
+                <p>{{ solution }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="side-image">
+            <img src="{{ url_for('static', filename='img1.jpeg') }}" alt="Right Image" class="right-img">
+        </div>
+    </div>
+   <footer class="footer">
+        <p>Presented by <span style="color:#ffd700; font-weight:bold;">Nalanda Degree College</span></p>
+    </footer>
+</body>
+</html>

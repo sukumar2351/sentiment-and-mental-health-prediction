@@ -1,0 +1,19 @@
+# 1. Use official Python runtime
+FROM python:3.10-slim
+
+# 2. Set working directory inside container
+WORKDIR /app
+
+# 3. Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. Copy all your project files into container
+COPY . .
+
+# 5. Cloud Run requires port 8080
+EXPOSE 8080
+
+# 6. Start Flask app using Gunicorn
+# "index:app" = in index.py, use the variable app = Flask(__name__)
+CMD exec gunicorn --bind :8080 --workers 1 --threads 8 index:app

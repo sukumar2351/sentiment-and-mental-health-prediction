@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: url("{{ url_for('static', filename='analysis.jpeg') }}") no-repeat center center/cover;
+            opacity: 0.25;
+            z-index: -1;
+            animation: floatBackground 40s infinite linear;
+        }
+
+        @keyframes floatBackground {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, -20px) scale(1.08); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .page {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #fff;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+        }
+
+        .card {
+            background: rgba(0,0,0,0.6);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: #2575fc;
+            color: #fff;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #1a5edb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        th {
+            background: rgba(37,117,252,0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>User Analysis Dashboard</h1>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <img src="{{ url_for('static', filename='charts/pie.png') }}" width="300">
+            <img src="{{ url_for('static', filename='charts/bar.png') }}" width="300">
+            <img src="{{ url_for('static', filename='charts/line.png') }}" width="600">
+        </div>
+        <div class="card" style="margin-top:20px;">
+            <h2> Recent Entries</h2>
+            <table>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Text</th>
+                    <th>Prediction</th>
+                    <th>Action</th>
+                </tr>
+                {% for row in tables %}
+                <tr>
+                    <td>{{ row.timestamp }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.age }}</td>
+                    <td>{{ row.text }}</td>
+                    <td><span class="badge">{{ row.prediction }}</span></td>
+                    <td>
+                        <form method="POST" action="/delete/{{ row.timestamp }}">
+                            <button type="submit" class="btn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

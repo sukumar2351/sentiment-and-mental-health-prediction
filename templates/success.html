@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page">
+        <div class="card result show">
+            <h2>Successfully Registered</h2>
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Age:</strong> {{ age }}</p>
+            <p><strong>Your Thought:</strong> {{ text }}</p>   
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+            <p><strong>Solution:</strong> {{ solution }}</p>
+
+            <form action="/results" method="POST">
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="age" value="{{ age }}">
+                <input type="hidden" name="original" value="{{ text }}">
+                <input type="hidden" name="prediction" value="{{ prediction }}">
+                <input type="hidden" name="solution" value="{{ solution }}">
+
+                <button type="submit" class="btn">See Results</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact & Support - MindPredict</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <div class="header">
+      <h1>Contact & Support</h1>
+      <p class="subtitle">We’re here to help you with any questions or feedback</p>
+    </div>
+
+    <!-- Contact Form Card -->
+    <div class="card">
+      <form method="post" action="mailto:youremail@example.com" enctype="text/plain">
+        
+        <label class="label">Your Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <label class="label">Your Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+
+        <label class="label">Message</label>
+        <textarea class="textarea" name="message" placeholder="Type your message here..." required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Extra Support Info -->
+    <div class="card" style="margin-top: 20px; text-align:center;">
+      <h2 style="color:#39ff14; text-shadow:0 0 8px #ff00ff;">Need Urgent Help?</h2>
+      <p>Email us directly at 
+        <span style="color:#39ff14; font-weight:bold;">sukumar@gmail.com</span>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2025 MindPredict | Designed with by <span style="color:#ffd700; font-weight:bold;"> Nalanda Degree College</p>
+    </div>
+  </div>
+</body>
+</html>

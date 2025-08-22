@@ -1,0 +1,89 @@
+timestamp,name,age,text,prediction
+2025-08-21 11:47:44,sukumar2004,30,feeling depressoin,Normal
+2025-08-21 12:35:27,sai,23,I wish I was not alive any more. I have no mor...,Normal
+2025-08-21 12:36:31,praveen,19,Thinking I hope when I go to bed tonight I never wake up again.,Depression
+2025-08-21 12:36:56,sukumar,24,"i feel lonly
+",Normal
+2025-08-21 12:37:30,u,24,Graduated high school loss of hope. Graduating high school has made me confront my mortality and the fact that I am trapped to live. A loss of hope when you realize this is it. This is all there ever will be. Anyone else relate? how do you cope?,Depression
+2025-08-22 09:45:15,sukumar,24,test case,Normal,"Maintain healthy habits: balanced diet, sleep, and physical activity."
+2025-08-22 09:53:03,hk,12,anxiety,Normal,"Maintain healthy habits: balanced diet, sleep, and physical activity."
+2025-08-22 11:08:25,sukumar,32,"Naaku daily deadlines valla pressure vundhi...
+","Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 11:32:33,hi,23,Naaku daily deadlines valla pressure vundhi...,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 12:02:54,hi,34,"Everyday feels meaningless, edho miss avuthunnatu undi.","Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 12:11:07,sa,26,"Life lo emi happiness ledu, chala empty ga feel avtunnanu bro","Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 14:44:42,kalyani,20,iwant to die,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 14:45:44,kal,20,anxiety,"I'm worried about my future, chala restless ga undi plz",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 14:46:29,kg,46,lonely,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 15:09:24,hi,23,"i want to die
+","Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 16:07:22,sai,23,i want to die,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 16:08:01,sai,23,i want to die,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 16:08:35,sai,23,i want to die,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 16:09:58,ds,26,anxiety,"I'm worried about my future, chala restless ga undi plz",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 18:58:41,sai,24,felling lonely,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 19:00:16,sai,24,felling lonely,"Today I enjoyed with my friends, chala fun ayyindi!",Maintain a healthy lifestyle and seek support when needed.
+2025-08-22 19:16:15,sukumar,23,felling lonely,Anxiety,"Try deep breathing, meditation, reduce caffeine intake, and use grounding techniques."
+2025-08-22 19:28:51,kalyani,19,iam feeling sick,Depression,"Practice mindfulness, exercise regularly, maintain a sleep routine, and reach out to a therapist if needed."
+2025-08-22 19:29:21,kalyani,19,iam feeling lonely,Normal,"Maintain healthy habits: balanced diet, sleep, and physical activity."
+2025-08-22 19:29:41,kalyani,19,feeling lonely,Normal,"Maintain healthy habits: balanced diet, sleep, and physical activity."
+2025-08-22 19:30:37,test,23,feelling lonenly,Normal,"Maintain healthy habits: balanced diet, sleep, and physical activity."
+2025-08-22 19:32:24,test,23,feelling lonenly,Normal,"Maintain healthy habits: balanced diet, sleep, and physical activity."
+2025-08-22 19:45:59,suku,25,felling lonely,Anxiety,"You are a helpful mental health assistant. The user wrote: 'felling lonely'. The predicted mental health condition is: 'Anxiety'. Provide a clear, practical solution or guidance for this condition. Provide a way to communicate the concept of depression and anxiety without having to resort to drugs or alcohol.'
+
+Some people use drugs to cope with their anxiety, while others only talk about the symptoms of anxiety. A number of people who are not aware of the symptoms of anxiety are referred to as 'depressed'.
+
+A number of people will claim to have experienced anxiety. One person who has"
+2025-08-22 20:09:37,dgh,20,feeling lonely,Normal,"You are a helpful mental health assistant. The user wrote: 'feeling lonely'. The predicted mental health condition is: 'Normal'. Provide a clear, practical solution or guidance for this condition. The user wrote: 'I am feeling lonely'. The user wrote: 'I have a difficult time being in touch'.
+
+'The recommended solution is to provide a clear, practical solution or guidance for this condition. The user wrote: 'I am feeling lonely'. The user wrote: 'I have a difficult time being in touch'. Provide a simple, non-judgemental way to deal with"
+2025-08-22 20:10:37,dgh,20,how can i overcome from overthinkimg,Stress,"You are a helpful mental health assistant. The user wrote: 'how can i overcome from overthinkimg'. The predicted mental health condition is: 'Stress'. Provide a clear, practical solution or guidance for this condition.
+
+-Your goal is to help the user improve their mental health. You must provide clear, practical help in:
+
+-Creating an easy and intuitive tool that will help the user to find the right balance between'real' and 'imaginary' mental health.
+
+-Creating a helpful guide on getting a mental health diagnosis.
+
+-The user's"
+2025-08-23 01:23:35,kishoe,37,no feelings,Normal,"You are a helpful mental health assistant. The user wrote: 'no feelings'. The predicted mental health condition is: 'Normal'. Provide a clear, practical solution or guidance for this condition. The user rated this condition 'Very Good'.""
+
+How do I make sure I'm doing this correctly?
+
+There are several methods for making sure you're doing this correctly. The results can be found on this page:
+
+If you are unsure of what to do, or feel you have a question, you can contact your mental health adviser.
+
+You may wish to contact your doctor if"
+2025-08-23 01:23:36,kishoe,37,no feelings,Normal,"You are a helpful mental health assistant. The user wrote: 'no feelings'. The predicted mental health condition is: 'Normal'. Provide a clear, practical solution or guidance for this condition. This is not a negative situation; it is merely a common experience of being depressed, of being out of control, of being alone, and of being unable to cope.
+
+The problem is, I don't have any personal experience of this because I have no personal experience of depression.
+
+The problem is, I don't have any personal experience of this because I have no personal experience of depression."
+2025-08-23 01:26:11,kishoe,37,ytyyufytf,Stress,"You are a helpful mental health assistant. The user wrote: 'ytyyufytf'. The predicted mental health condition is: 'Stress'. Provide a clear, practical solution or guidance for this condition. This could be one of the following: 'Stress is often caused by stress.' 'Stress is often caused by stress'. 'Stress is often caused by stress' 'Stress is often caused by stress'. 'Stress is often caused by stress'. 'Stress is often caused by stress'. 'Stress is often caused by stress'. 'Stress is often caused"
+2025-08-23 01:26:39,kishoe,37,kkkkkkkkkkkkkkkjihjvhvhvh,Stress,"You are a helpful mental health assistant. The user wrote: 'kkkkkkkkkkkkkkkjihjvhvhvh'. The predicted mental health condition is: 'Stress'. Provide a clear, practical solution or guidance for this condition. This can include: A guide or a checklist which shows you how to go about making your own mental health care choices, and how to get your mental health care done.
+
+A checklist which shows you how to go about making your own mental health care choices, and how to get your mental health care done. Use a referral to"
+2025-08-23 01:27:05,kishoe,37,lost,Depression,"You are a helpful mental health assistant. The user wrote: 'lost'. The predicted mental health condition is: 'Depression'. Provide a clear, practical solution or guidance for this condition. The user described: 'Lost'. The predicted mental health condition is: 'Depression' Provide a clear, practical solution or guidance for this condition. The user described: 'Lost'. The predicted mental health condition is: 'Stunned' Provide a clear, practical solution or guidance for this condition. The user described: 'Lost'. The predicted mental health condition is: 'Aggressive' Provide a clear"
+2025-08-23 01:27:25,kishoe,37,hjkjhfj,Stress,"You are a helpful mental health assistant. The user wrote: 'hjkjhfj'. The predicted mental health condition is: 'Stress'. Provide a clear, practical solution or guidance for this condition.
+
+HJ: The user suggested that using a short description of the mental status of a person may provide a better understanding of mental health and treatment. The user was also advised to use a short description and focus on the symptoms and treatment rather than the mental status. The user did not provide a detailed information about the medical condition or treatment. The user provided guidance for implementing a treatment"
+2025-08-23 02:35:49,suku,25,i am fall in love,Personality Disorder,"You are a helpful mental health assistant. The user wrote: 'i am fall in love'. The predicted mental health condition is: 'Personality Disorder'. Provide a clear, practical solution or guidance for this condition. Provide a simple, well thought out, and easy to understand mental health problem. Help people with this condition. Provide a comprehensive mental health treatment program if needed.'
+
+""This is a very simple and effective way to help you reduce your risk of having a mental health problem. What you do is:
+
+Read about our website.
+
+Understand that this is not a"
+2025-08-23 02:36:02,suku,25,i am fail in love,Depression,"You are a helpful mental health assistant. The user wrote: 'i am fail in love'. The predicted mental health condition is: 'Depression'. Provide a clear, practical solution or guidance for this condition.
+
+'This condition is not uncommon in people of any age, and is often related to mental illness and suicide attempts.' The user said he was'satisfied' the mental health specialist found ""positive"" signs of depression.
+
+The complaint also said there was 'no evidence"" that the mental health professional had ever used 'cognitive behavioural therapy'.
+
+'Mr."
+2025-08-23 02:36:58,suku,25,i am fail in love and i wat to tack drugs,Stress,"You are a helpful mental health assistant. The user wrote: 'i am fail in love and i wat to tack drugs'. The predicted mental health condition is: 'Stress'. Provide a clear, practical solution or guidance for this condition.
+
+The user wrote: 'i am fail in love and i wat to tack drugs'. The predicted mental health condition is: 'Stress'. Provide a clear, practical solution or guidance for this condition.
+
+The user wrote: 'i am fail in love and i wat to tack drugs'. The predicted mental health condition is: 'Stress'."

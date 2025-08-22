@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - MindPredict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: url("{{ url_for('static', filename='Bg.png') }}") no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: -1;
+            animation: floatBackground 30s infinite linear;
+        }
+        @keyframes floatBackground {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, -20px) scale(1.05); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar li {
+            margin: 0 12px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .about-box {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            animation: fadeIn 1s ease;
+            text-align: left;
+        }
+        .about-box h1 {
+            color: #2575fc;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .about-box p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #6a11cb;
+            font-weight: bold;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.4);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/predict">Prediction</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="about-box">
+            <h1>About MindPredict</h1>
+            <p>
+                <span class="highlight">MindPredict</span> is an AI-powered system designed 
+                to analyze text input and provide insights into possible 
+                <b>mental health conditions</b> such as Depression, Anxiety, Stress, 
+                Loneliness, Bipolar Disorder, Schizophrenia, or Normal state.
+            </p>
+            <p>
+                Our model uses <b>Natural Language Processing (NLP)</b> and 
+                <b>Machine Learning</b> to detect emotional patterns from user responses. 
+                This enables early awareness of mental well-being and helps individuals 
+                reflect on their mental state.
+            </p>
+            <p>
+                ⚠️ <b>Disclaimer:</b> This tool is meant for <u>educational and awareness purposes only</u>.  
+                It is <b>not a substitute</b> for professional diagnosis or treatment.  
+                If you are experiencing mental health issues, please seek guidance from a 
+                certified mental health professional.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Presented by <span style="color:#ffd700; font-weight:bold;">Nalanda Degree College</span></p>
+    </footer>
+</body>
+</html>

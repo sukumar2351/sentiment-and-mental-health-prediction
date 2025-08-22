@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MindPredict - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+       
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: url("{{ url_for('static', filename='Bg.png') }}") no-repeat center center;
+            background-size: cover;
+            opacity: 0.15; /* faded so text is visible */
+            z-index: -1;
+            animation: floatBackground 40s infinite ease-in-out;
+        }
+
+        @keyframes floatBackground {
+            0%   { transform: translate(0, 0) scale(1); opacity: 0.15; }
+            25%  { transform: translate(-25px, -15px) scale(1.05); opacity: 0.2; }
+            50%  { transform: translate(-50px, -25px) scale(1.1); opacity: 0.25; }
+            75%  { transform: translate(-25px, -15px) scale(1.05); opacity: 0.2; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar li {
+            margin: 0 12px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #ffd700;
+        }
+        .logo {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 30px;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .hero img {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+        .btn {
+            background: #ffd700;
+            color: #333;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #ffb700;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.4);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/predict">Prediction</a></li>
+            <li><a href="/contact-support">Contact & Support</a></li>
+        </ul>
+    </nav>
+
+    
+    <div class="content">
+        <section class="hero">
+            <h1>Sentiment & Mental Health Prediction</h1>
+            <p>Understand your mental well-being with AI-driven insights.</p>
+            <a href="/predict"><button class="btn">Start Prediction</button></a>
+        </section>
+    </div>
+
+    
+    <footer class="footer">
+        <p> Presented By <span style="color:#ffd700; font-weight:bold;">CS Department students</span></p>
+    </footer>
+</body>
+</html>
