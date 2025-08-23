@@ -16,11 +16,13 @@ from flask import Flask, render_template, request, Response
 from datetime import datetime
 from transformers import pipeline
 
+# ------------------ Flask App Setup ------------------
 app = Flask(__name__)
 
 ADMIN_USERNAME = "host"
 ADMIN_PASSWORD = "admin123"
 
+# HuggingFace Pipelines
 ai_classifier = pipeline(
     "text-classification",
     model="bhadresh-savani/distilbert-base-uncased-emotion",
@@ -36,9 +38,12 @@ solution_generator = pipeline(
 
 pt = PorterStemmer()
 
+
+# ------------------ Preprocessing ------------------
 def preprocessing(text):
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text.lower())
     return " ".join([pt.stem(word) for word in text.split()])
+
 
 def map_ai_to_status(label):
     mapping = {
@@ -52,9 +57,12 @@ def map_ai_to_status(label):
     }
     return mapping.get(label, "Normal")
 
+
+# ------------------ Flask Routes ------------------
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
@@ -68,7 +76,7 @@ def predict():
         if len(text_proc.strip()) < 3 or len(text_proc.split()) < 2:
             return render_template("predict.html", error="Please enter a meaningful sentence.")
 
-        ai_results = ai_classifier(text_proc)[0]  # list of dicts with scores
+        ai_results = ai_classifier(text_proc)[0]
         best = max(ai_results, key=lambda x: x['score'])
         result = map_ai_to_status(best['label'])
 
@@ -152,23 +160,26 @@ def analysis():
     if not os.path.exists("static/charts"):
         os.makedirs("static/charts")
 
-        plt.figure(figsize=(6,6))
+    # Pie chart
+    plt.figure(figsize=(6, 6))
     df['prediction'].value_counts().plot.pie(autopct='%1.1f%%', shadow=True)
     plt.title("Prediction Distribution")
     plt.ylabel("")
     plt.savefig("static/charts/pie.png")
     plt.close()
 
-    plt.figure(figsize=(8,5))
+    # Bar chart
+    plt.figure(figsize=(8, 5))
     sn.countplot(x="prediction", data=df)
     plt.title("Number of Users by Prediction")
     plt.xticks(rotation=45)
     plt.savefig("static/charts/bar.png")
     plt.close()
 
+    # Timeline chart
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     timeline = df.groupby(df['timestamp'].dt.date)['prediction'].count()
-    plt.figure(figsize=(10,5))
+    plt.figure(figsize=(10, 5))
     timeline.plot(kind='line', marker='o')
     plt.title("Predictions Over Time")
     plt.xlabel("Date")
@@ -189,8 +200,75 @@ def contact_support():
     return render_template("contact_support.html")
 
 
+# ------------------ ML Training Section ------------------
+def resmpl(df):
+    max_count = df['status'].value_counts().max()
+    df_resampled = pd.DataFrame()
+    for status in df['status'].unique():
+        df_class = df[df['status'] == status]
+        if len(df_class) < max_count:
+            df_class_resampled = resample(df_class, replace=True, n_samples=max_count, random_state=42)
+            df_resampled = pd.concat([df_resampled, df_class_resampled])
+        else:
+            df_resampled = pd.concat([df_resampled, df_class])
+    return df_resampled
+
+
+def train_model(data_path="dataset.csv"):
+    df = pd.read_csv(data_path)
+    df = resmpl(df)
+    df['statement'] = df['statement'].apply(preprocessing)
+
+    x = df['statement']
+    y = df['status']
+    x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=42, test_size=0.2)
+
+    vec = TfidfVectorizer()
+    x_train_tfidf = vec.fit_transform(x_train)
+    x_test_tfidf = vec.transform(x_test)
+
+    # Try different classifiers
+    models = {
+        "RandomForest": RandomForestClassifier(),
+        "AdaBoost": AdaBoostClassifier(),
+        "ExtraTrees": ExtraTreesClassifier(),
+        "LogisticRegression": LogisticRegression(max_iter=500)
+    }
+
+    for name, clf in models.items():
+        clf.fit(x_train_tfidf, y_train)
+        y_pred = clf.predict(x_test_tfidf)
+        print(f"{name} Test accuracy:", accuracy_score(y_test, y_pred))
+        print(f"{name} Precision:", precision_score(y_test, y_pred, average='weighted'))
+
+    # Save best model (RF here)
+    j.dump(vec, 'vectorizer.pkl')
+    j.dump(models["RandomForest"], 'model.pkl')
+
+
+# ------------------ Prediction with Saved Model ------------------
+vector = None
+model = None
+if os.path.exists("vectorizer.pkl") and os.path.exists("model.pkl"):
+    vector = j.load('vectorizer.pkl')
+    model = j.load('model.pkl')
+
+
+def predi(text):
+    if vector is None or model is None:
+        return "Model not trained yet."
+    text_proc = preprocessing(text)
+    vec = vector.transform([text_proc])
+    result = model.predict(vec)[0]
+    return result
+
+
+# ------------------ Run App ------------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
+
+
 
 
 if __name__ == "__main__" and False:
